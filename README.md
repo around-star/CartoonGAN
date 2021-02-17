@@ -1,5 +1,5 @@
 # CartoonGAN
-Implemetation of CartoonGAN on TensorFlow
+Implemetation of CartoonGAN in TensorFlow
 
 *Paper Link* - https://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf
 
