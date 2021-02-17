@@ -128,8 +128,6 @@ class Train:
     def initialization(self):
         
         optimizer = tf.keras.optimizers.Adam(learning_rate = self.init_learning_rate)
-        #if init_saved_weight_dir:
-        #    self.gen_model.load_weights(init_saved_weight_dir)
 
         checkpoint = tf.train.Checkpoint(generator=self.gen_model, optimizer = optimizer)
         try:
@@ -180,11 +178,6 @@ class Train:
         
         gen_optimizer = tf.keras.optimizers.Adam(learning_rate = self.gen_learning_rate)
         disc_optimizer = tf.keras.optimizers.Adam(learning_rate = self.disc_learning_rate)
-        """
-        if gen_saved_weight_dir :
-            self.gen_model.load_weights(gen_saved_weight_dir)
-            if disc_saved_weight_dir :
-                self.disc_model.load_weights(disc_saved_weight_dir)"""
         
         g_checkpoint = tf.train.Checkpoint(g_model = self.gen_model, g_optimizer = gen_optimizer)
         try:
@@ -251,7 +244,6 @@ class Train:
             if (epoch+1) % self.epoch_save == 0:
 
                 self.gen_model.save_weights("gen_{}_weights.h5".format(epoch+1))
-                #self.disc_model.save_weights("disc_{}_weights.h5".format(epoch+1))
                 g_checkpoint.save(self.g_checkpoint_prefix)
                 d_checkpoint.save(self.d_checkpoint_prefix)
 
