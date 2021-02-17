@@ -23,7 +23,7 @@ def cartoon(cartoon_video_directory):
         print("Did not find video in the given directory.")
         return 
     frame_count = 0
-    c = 1963
+    c = 1
     while True:
         (grabbed, frame) = vs.read()
             
@@ -31,7 +31,7 @@ def cartoon(cartoon_video_directory):
             break
 
         if frame_count % 30 == 0 and not frame.all() == 0 and frame_count > 10000:
-            frame = cv2.resize(frame ,(500, 500))
+            frame = cv2.resize(frame ,(256, 256))
             cv2.imwrite('CartoonData/' + str(c) + '.jpg', frame)
             c+=1
         frame_count+=1
@@ -43,7 +43,7 @@ def original(directory):
     original_imgs = []
     for dirs in os.listdir(directory):
         img = cv2.imread(directory + '/' + dirs)
-        img = cv2.resize(img, (500, 500))
+        img = cv2.resize(img, (256, 256))
         original_imgs.append(img)
         
     original_imgs = np.array(original_imgs)
